@@ -1,0 +1,49 @@
+<form #f="ngForm" (ngSubmit)="login(f)" [formGroup]="contactusform">
+
+
+    <input type="text" placeholder="Enter your name" formControlName = "name">
+    
+    <div>
+  
+      <div *ngIf="username.touched && username.invalid">
+  
+        <p *ngIf="username.errors.required">Name Required</p>
+  
+      </div>
+     </div>
+     <br><br>
+  
+  
+    <input type="email" placeholder="Enter Email" formControlName = "email">
+    
+    <div>
+  
+      <div *ngIf="email.touched && email.invalid">
+  
+        <div *ngIf="email.errors.required">Email Required</div>
+        <div *ngIf="email.errors.email">Invalid Email</div>
+  
+      </div>
+     </div>
+     <br><br>
+     <br>
+
+     <textarea placeholder="Enter Message" formControlName = "text">
+     </textarea>
+     <div>
+  
+        <div *ngIf="text.touched && text.invalid">
+    
+          <div *ngIf="text.errors.required">Message Required</div>
+          <div *ngIf="text.errors.maxlength">Max Length is 500</div>
+    
+        </div>
+       </div>
+     <br><br>
+     <br>
+
+      <button [disabled]="f.invalid">Submit</button>
+      <br><br>
+
+    </form>
+

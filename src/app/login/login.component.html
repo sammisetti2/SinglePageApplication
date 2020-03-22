@@ -1,0 +1,51 @@
+
+<form #f="ngForm" (ngSubmit)="login(f)" [formGroup]="loginform">
+
+
+    <input type="text" placeholder="Enter Username" formControlName = "username">
+    
+    <div>
+  
+      <div *ngIf="username.touched && username.invalid">
+  
+        <p *ngIf="username.errors.required">Username Required</p>
+        <p *ngIf="username.errors.minlength">Min Length is 5</p>
+  
+      </div>
+     </div>
+     <br><br>
+  
+  
+    <input type="password" placeholder="Enter Password" formControlName = "password">
+    
+    <div>
+  
+      <div *ngIf="password.touched && password.invalid">
+  
+        <div *ngIf="password.errors.required">Password Required</div>
+        <div *ngIf="password.errors.minlength">Min Length is 5</div>
+  
+      </div>
+     </div>
+     <br><br>
+     <br>
+
+      <button [disabled]="f.invalid">Submit</button>
+      <br><br>
+
+      <a routerLink="forgotpassword">Forgot Password</a>
+
+
+      <div *ngIf="isInCorrect">
+        
+        Your Username and/or Password is incorrect.
+        
+      </div>
+
+      <div *ngIf="Correct">
+        
+        Your Login is successful.
+        
+      </div>
+
+    </form>
